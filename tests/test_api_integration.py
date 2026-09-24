@@ -28,7 +28,7 @@ def test_full_pipeline_integration():
     relevant_payload = {
         "source_url": "http://test.com",
         "published_date": "2023-10-02T00:00:00Z",
-        "raw_text": "A sudden walkout by dockworkers at the Port of Los Angeles has paused unloading."
+        "raw_text": "A sudden walkout by dockworkers at the Port of Kaohsiung has paused unloading."
     }
     resp2 = client.post("/api/v1/ingest", json=relevant_payload)
     assert resp2.status_code == 200
@@ -45,7 +45,7 @@ def test_full_pipeline_integration():
     # Verify the explainable path exists
     target_alert = alerts[0]
     assert "explanation" in target_alert
-    assert "Los Angeles" in target_alert["explanation"]
+    assert "Kaohsiung" in target_alert["explanation"]
     assert target_alert["status"] == "pending"
     
     # 5. Analyst Feedback: Try without token (Should fail Auth)
